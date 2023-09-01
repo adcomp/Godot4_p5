@@ -196,6 +196,8 @@ func set_color(color:Color):
 	_no_fill = false
 	_no_stroke = false
 
+func setPointCount(point_count):
+	_point_count = point_count
 
 ### Environment
 func cursor(): pass
@@ -219,14 +221,16 @@ func circle(x:float, y:float, radius:float, point_count: int = 32):
 	if _no_fill == false:
 		draw_circle(Vector2(x,y), radius, _fill_color)
 	if _no_stroke == false:
-		draw_arc(Vector2(x,y), radius, 0, TAU, point_count, _stroke_color, _stroke_weight, true)
+		draw_arc(Vector2(x,y), radius, 0, TAU, point_count, _stroke_color, _stroke_weight, _antialiased)
 
 func line(x0:float, y0:float, x1:float, y1:float):
 	if _no_stroke:
 		return
-	draw_line(Vector2(x0, y0), Vector2(x1, y1), _stroke_color, _stroke_weight, true)
+	draw_line(Vector2(x0, y0), Vector2(x1, y1), _stroke_color, _stroke_weight, _antialiased)
 
-func arc(x, y, w, h, start, stop, mode): pass
+func arc(x, y, w, h, start, stop):
+	draw_arc(Vector2(x,y), w, start, stop, _point_count, _stroke_color, _stroke_weight, _antialiased)
+
 func ellipse(): pass
 
 func point(x, y):
