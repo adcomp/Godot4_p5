@@ -1,5 +1,8 @@
 extends GodotP5
 
+# based on "space prompt from Genuary 2022" by hbyhadeel
+# https://www.youtube.com/watch?v=Q6XMoFjbjSs
+
 var pts
 
 class P:
